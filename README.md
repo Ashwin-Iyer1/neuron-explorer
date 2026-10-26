@@ -12,7 +12,8 @@ rollout is kept, and the explorer lays the results out over a 3D view of the mod
 
 Reads sweep runs from `runs/` and per-layer stats from `stats/`, both produced by the sweep below; the caches in
 `explorer/cache/` ship with the repo. Loads Qwen3.5-4B locally (MPS, CUDA or CPU) for live
-steered chat, lens, connections and live inference over your own text.
+steered chat, lens, connections and live inference over your own text. Under CUDA, steered decoding replays each token
+from a CUDA graph (about 3x faster; `EXPLORER_CUDA_GRAPHS=0` turns it off).
 
 - **map**: the model's layers in perspective, attention and MLP per layer, one point per neuron. Hover shows a neuron's
   steer lens and logit lens; click opens it; click a layer's label to view its sheet face-on. `writes` places
